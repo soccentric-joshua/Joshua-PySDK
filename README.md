@@ -1,15 +1,19 @@
 # Joshua-PySDK
 
-This is the README for Joshua-PySDK.
+Python SDK leaf for the **Joshua** project (NVIDIA Jetson + STM32) in the
+SiliconCentric `project-managers` fleet.
 
-## Description
+This leaf provides `joshua-sdk`, a Pythonic gRPC client for the `HalService`
+endpoint exposed by `Joshua-Client`. The SDK distribution package is
+**`joshua-sdk`** (import name `joshua_sdk`); a `acadia_sdk` deprecation shim
+re-exports the public surface for callers still on the old name.
 
-Add project description here.
+The SDK source, tooling, docs, examples, and test suite live under
+[`joshua-sdk/`](joshua-sdk/). See [`joshua-sdk/README.md`](joshua-sdk/README.md)
+for the full API, quickstart, and `make` targets (`setup`, `gen`, `check`,
+`build`).
 
-## Setup
-
-Add setup instructions here.
-
-## Usage
-
-Add usage instructions here.
+---
+Part of the `Joshua` project in the `project-managers` fleet. See
+`docs/project-managers.md` for the full 9-project / 8-leaf hierarchy and
+shared conventions.
