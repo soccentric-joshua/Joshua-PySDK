@@ -1,4 +1,4 @@
-# Joshua-PySDK — specs Remote: `git@github.com:SiliconCentric/Joshua-PySDK.git`
+# Joshua-PySDK — specs Remote: `git@github.com:soccentric-joshua/Joshua-PySDK.git`
 Stack: Python, uv-managed, src layout. Consumes the `HalService` gRPC endpoint exposed by Joshua-Client — the same wire contract
 Joshua-Server speaks. ## Layout * `joshua-sdk/` — everything: source, tooling, docs, examples, the make workflow (setup/ gen/ check/ build).
 * `joshua-sdk/src/joshua_sdk/` — the package. Import name `joshua_sdk`, distribution name `joshua-sdk`.
