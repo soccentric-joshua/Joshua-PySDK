@@ -1,4 +1,4 @@
-# IV&V Python SDK (`joshua-sdk`) A Pythonic, statically-typed client for the [Acadia HAL](../Acadia-HAL)
+# IV&V Python SDK (`joshua-sdk`) A Pythonic, statically-typed client for the [Joshua HAL](../Joshua-HAL)
 `HalService` gRPC interface, designed for IV&V customers writing test
 benches, certification scripts, and lab automation. * **One import** — `import joshua_sdk as ivv`
 * **One call to connect** — `ivv.connect("192.168.1.50:50052")`
@@ -29,7 +29,7 @@ cd joshua-sdk
 pip install -e .[dev]
 ``` The generated proto bindings ship inside the wheel; you do **not** need
 `grpcio-tools` at runtime. You only need it (and a copy of
-`Acadia-HAL/protos/`) if you want to regenerate the bindings (see
+`Joshua-HAL/protos/`) if you want to regenerate the bindings (see
 `make gen`). --- ## What runs on the wire The SDK speaks to **`acadia-server`** (Acadia's gRPC daemon) over the
 stable per-mode contract `hal.HalService`, default plaintext on
 `tcp/50051`. This is the same interface `acadia-client` would use; the
@@ -51,7 +51,7 @@ ivv.Device .address: str .peripherals -> list[str] .module_info(id) -> ModuleInf
 ivv.Peripheral .id: str .info: ModuleInfo .capabilities -> set[str] .run_oneshot(*, tests=None, raise_on_failure=False, **config) -> Result .self_test -> Result .monitor(period_ms, duration_s=None, **config) -> Iterator[Result] .arm_event(*, test_name="", expression="", **config) -> Iterator[Result] .start_long_running(*, interval_ms=1000, duration_s=None, **config) -> LongRunningSession .query_long_running(*, block=True, timeout=None) -> Result | None .stop_long_running .pause -> bool .resume -> bool
 ivv.IVVError ← every exception inherits from this ivv.ConnectionError ← channel down, handshake mismatch ivv.PeripheralNotFound ← unknown module id ivv.NotSupported ← capability not advertised ivv.ConfigError ← peer rejected configuration ivv.TestError ← peer reported ERROR/ ABORTED ivv.TimeoutError ← peer reported TIMEOUT or deadline hit
 ivv.__version__ "0.1.0"
-ivv.__contracts_version__ 1 ← matches Acadia-HAL/protos contract version
+ivv.__contracts_version__ 1 ← matches Joshua-HAL/protos contract version
 ``` `FAIL` is a normal status, not an exception. Pass `raise_on_failure=True`
 to `run_oneshot` if you want it to raise. --- ## Error model | gRPC status | SDK exception |
 |-----------------------|----------------------|
@@ -77,7 +77,7 @@ contracts-version field bumps independently of the SDK release version. --- ## T
 5. `05_long_running_test.py` — Long-running session lifecycle
 6. `06_self_test_all.py` — Run every peripheral's self-test
 7. `07_build_an_app.py` — A small bench tool emitting JSON --- ## Developer workflow ```bash
-make gen # regenerate proto stubs + dataclasses from Acadia-HAL/protos
+make gen # regenerate proto stubs + dataclasses from Joshua-HAL/protos
 make build # build sdist + wheel
 make test # run pytest with coverage
 make lint # ruff
